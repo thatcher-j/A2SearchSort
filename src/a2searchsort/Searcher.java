@@ -50,10 +50,32 @@ package a2searchsort;
             return i;
         }
         
-        /*public int bsearch (int[] data, int key)
+       public int bSearch (int[] data, int key)
         {
+            int hi = data.length;
+            int low = 0;
+            int index = -1;
             
-        }*/
+            while (low < hi - 1)
+            {
+                if (data[((low + hi)/2)] > key)
+                {
+                    hi = ((low + hi)/2);
+                }
+                else if (data[((low + hi)/2)] < key)
+                {
+                    low = ((low + hi)/2);
+                }
+                else
+                {
+                    index = ((low + hi)/2);
+                    low = 1;
+                    hi = 0;
+                }
+            }
+            
+            return index;
+        }
         
         public void printOut (int[] data)
         {
