@@ -91,73 +91,43 @@ package a2searchsort;
             return data;
         }
         
-        private int partition (int low, int hi, int[] data)
-        {       
-            int pivotIndex = hi;
-            int lowRange = low;
-            int hiRange = pivotIndex;
-            int count;
+         public int partition (int low, int high, int[] data)
+    {
+        int pivotIndex = high;
+        int highRange = high;
+        int lowRange = low;
+        
+        while (lowRange <= highRange)
+        {
             
-            while (lowRange < hiRange)
-            {
-                count = lowRange;
-                while (data[count] < data[pivotIndex])
+            while (data[lowRange] <= data[pivotIndex])
                 {
-                    count++;
-                }           
-                lowRange = count;
-                
-                count = hiRange;
-                while (data[count] > data[pivotIndex])
-                {
-                    count--;
+                    lowRange++;
                 }
-                int n = data[count];
-                data[count] = data[lowRange];
-                data[lowRange] = n;
-                
-                hiRange = count;
-            }
-            
-            return pivotIndex;
+            while (lowRange < highRange && data[highRange - 1] > data[pivotIndex])
+                {
+                    highRange--;
+                }
+        
+            if (lowRange < highRange)
+                {
+                    int n = data[lowRange];
+                    data[lowRange] = data[highRange - 1];
+                    data[highRange - 1] = n;
+                }
+            else
+                {
+                    int n = data[highRange];
+                    data[highRange] = data[pivotIndex];
+                    data[pivotIndex] = n;
+                    pivotIndex = highRange;
+                    highRange--;
+                }
         }
         
-        /*private int partition (int low, int hi, int[] data)
-        {
-            int pivotIndex = hi;
-            int lowRange = low;
-            int hiRange = pivotIndex;
-            int count;
-            
-            while (lowRange < hiRange)
-            {
-                count = lowRange;
-                while (data[count] < data[pivotIndex])
-                {
-                    count++;
-                }
-                int n = data[count];
-                data[count] = data[pivotIndex];
-                data[pivotIndex] = n;
-                pivotIndex = count;
-                
-                lowRange = count;
-                count = hiRange;
-                while (data[count] > data[pivotIndex])
-                {
-                    count--;
-                }
-                n = data[count];
-                data[count] = data[pivotIndex];
-                data[pivotIndex] = n;
-                pivotIndex = count;
-                
-                hiRange = count;
-            }
-            
-            return pivotIndex;
-        }*/
-        
+        return pivotIndex;
+    }
+              
         public void printOut (int[] data)
         {
             System.out.println ("\n\n");
