@@ -25,24 +25,24 @@ package a2searchsort;
  	
  	// ********** constructors ***********
      
-        public Searcher ()
+        public Searcher () //default constructor
         {
             
         }
  	
  	// ********** accessors **********
         
-        public int lSearch (int[] data, int key)
+        public int lSearch (int[] data, int key) //linear search for use on an unordered list
         {
             int i = 0;
             int length = data.length;
             
-            while (i < length && data[i] != key )
+            while (i < length && data[i] != key ) //searches all indexes ihn array for key
             {
                 i++;
             }
             
-            if (i == length)
+            if (i == length) //if the key is  not found, return -1
             {
                 i = -1;
             }
@@ -50,34 +50,34 @@ package a2searchsort;
             return i;
         }
         
-       public int bSearch (int[] data, int key)
+       public int bSearch (int[] data, int key) //binary search for use on an ordered list
         {
             int hi = data.length;
             int low = 0;
             int index = -1;
             
-            while (low < hi - 1)
+            while (low < hi - 1) //while low is less than hi, with -1 to prevent infinite looping
             {
-                if (data[((low + hi)/2)] > key)
+                if (data[((low + hi)/2)] > key) //if midpoint greater than key
                 {
-                    hi = ((low + hi)/2);
+                    hi = ((low + hi)/2); //hi is now the midpoint
                 }
-                else if (data[((low + hi)/2)] < key)
+                else if (data[((low + hi)/2)] < key) //else if midpoint less than key
                 {
-                    low = ((low + hi)/2);
+                    low = ((low + hi)/2); //low is now the midpoint
                 }
-                else
+                else //if the midpoint is the key
                 {
-                    index = ((low + hi)/2);
+                    index = ((low + hi)/2); //sets index (of key) equal to midpoint
                     low = 1;
-                    hi = 0;
+                    hi = 0; //^this and line above to terminate loop
                 }
             }
             
             return index;
         }
         
-        public void printOut (int[] data)
+        public void printOut (int[] data) //print out the array to console for testing
         {
             System.out.println ("\n\n");
             
