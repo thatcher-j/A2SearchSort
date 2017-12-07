@@ -1,9 +1,15 @@
-// Description:	a brief description of the program goes here
+// **********************************************************************
+// Programmer:	Joshua R. Thatcher
+// Class:		CS40S
+//
+// Assignment:	A2
+//
+// Description:	Throwaway client code for searcher and sorter (classes) testing
 //
 //
-//	Input:		describe any input from keyboard or file
+//	Input:		Text file named "SortingTestData.txt"
 //
-//  Output:		describe the result of your program
+//  Output:		Shows that sorters and searchers are working
 // ***********************************************************************
 package a2searchsort;
 
@@ -55,17 +61,17 @@ public class A2SearchSort /*CHANGE THIS TO THE NAME OF THE FILE*/
             search = new Searcher ();
 	
 	// ***** processing *****
-            /*System.out.println ("\n\n");
+            System.out.println ("\n\n");
             sort.printOut (data);
             System.out.println ("\n\n");
             
-            sort.printOut(sort.qSort(data));*/
+            sort.printOut(sort.qSort(data));
             
             System.out.println ("\n\n");
             search.printOut (data);
             System.out.println ("\n\n");
             
-            System.out.println (search.lSearch (data, 45));
+            System.out.println (search.bSearch (data, 65));
             
 	// ***** output *****
         

@@ -37,7 +37,7 @@ package a2searchsort;
             int i = 0;
             int length = data.length;
             
-            while (i < length && data[i] != key ) //searches all indexes ihn array for key
+            while (i < length && data[i] != key ) //searches all indexes in array for key
             {
                 i++;
             }
