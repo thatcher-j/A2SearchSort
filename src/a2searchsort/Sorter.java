@@ -24,103 +24,103 @@ package a2searchsort;
  	
  	// ********** constructors ***********
      
-        public Sorter ()
+        public Sorter () //default constructor
         {
             
         }
  	
  	// ********** accessors **********
         
-        public int[] bSort (int[] data)
+        public int[] bSort (int[] data) //simple binary sort
         {       
-            for (int m = 0; m < data.length - 1; m++)
+            for (int m = 0; m < data.length - 1; m++) //goes through entire array
                 {
-                    for (int i = 0; i < data.length - 1; i++)
+                    for (int i = 0; i < data.length - 1; i++) //ges through again, nested
                         {
-                            if (data[i + 1] < data[i])
+                            if (data[i + 1] < data[i]) //if the current largest element is larger than the element next to itself
                                 {
                                     int n = data[i];
                                     data[i] = data[i+1];
-                                    data[i+1] = n;
+                                    data[i+1] = n; //swap
                                 }
                         }
                 }
             
-            return data;
+            return data; //return sorted array
         }
         
-        public int[] sSort (int[] data)
+        public int[] sSort (int[] data) //simple selection sort
         {
             int swapped = 0;
             int small = 0;
             
-            for (int m = 0; m < data.length; m++)
+            for (int m = 0; m < data.length; m++) //goes through entire array one element at a time
                 {
-                    for (int i = swapped; i < data.length; i++)
+                    for (int i = swapped; i < data.length; i++) //goes through array starting at last swapped element
                         {
-                            if (data[i] < data[small])
+                            if (data[i] < data[small]) //if the smallest value is greater than current element
                                 {
                                     small = i;
                                 }
                         }
                     int t = data[small];
                     data[small] = data[swapped];
-                    data[swapped] = t;
+                    data[swapped] = t; //swap small for swapped
             
-                    swapped++;
-                    small = swapped;
+                    swapped++; //increment swapped
+                    small = swapped; //set small equal to swapped
                 }
             
             return data;
         }
         
-        public int[] qSort (int[] data)
+        public int[] qSort (int[] data) //call to quickSort
         {
-            return quickSort (0, data.length - 1, data);
+            return quickSort (0, data.length - 1, data); //call to the actual quicksort method (that needs some different arguments)
         }
         
-        public int[] quickSort (int low, int hi, int[] data)
+        public int[] quickSort (int low, int hi, int[] data) //recursive qs sorter
         {
-            if (low < hi)
+            if (low < hi) //if the range given exists
             {
-                int pivotIndex = partition(low, hi, data);
-                quickSort (pivotIndex + 1, hi, data);
-                quickSort (low, pivotIndex - 1, data);
+                int pivotIndex = partition(low, hi, data); //partition the array and return the index of the pivot
+                quickSort (pivotIndex + 1, hi, data); //call iself on right side of the list
+                quickSort (low, pivotIndex - 1, data); //call itself on the left side of the list
             }
             
-            return data;
+            return data; //return sorted array
         }
         
-         public int partition (int low, int high, int[] data)
+         public int partition (int low, int high, int[] data) //partitions data
     {
         int pivotIndex = high;
         int highRange = high;
         int lowRange = low;
         
-        while (lowRange <= highRange)
+        while (lowRange <= highRange) //while range exists
         {
             
-            while (data[lowRange] <= data[pivotIndex])
+            while (data[lowRange] <= data[pivotIndex]) //for all elements of array that belong on the left side of the class and are already there
                 {
                     lowRange++;
                 }
-            while (lowRange < highRange && data[highRange - 1] > data[pivotIndex])
+            while (lowRange < highRange && data[highRange - 1] > data[pivotIndex]) //for all elements of array that belong on the right side of the class and are already there
                 {
                     highRange--;
                 }
         
-            if (lowRange < highRange)
+            if (lowRange < highRange) //as long as range still exists
                 {
                     int n = data[lowRange];
                     data[lowRange] = data[highRange - 1];
-                    data[highRange - 1] = n;
+                    data[highRange - 1] = n; //these 3 lines swap the places of elements that are in the wrong places
                 }
-            else
+            else //range no longer exists
                 {
                     int n = data[highRange];
                     data[highRange] = data[pivotIndex];
-                    data[pivotIndex] = n;
-                    pivotIndex = highRange;
+                    data[pivotIndex] = n; //move pivot to middle
+                    pivotIndex = highRange; //change pivotIndex to match new location of pivot
                     highRange--;
                 }
         }
@@ -128,7 +128,7 @@ package a2searchsort;
         return pivotIndex;
     }
               
-        public void printOut (int[] data)
+        public void printOut (int[] data) //prints array to console for testing ease
         {
             System.out.println ("\n\n");
             
