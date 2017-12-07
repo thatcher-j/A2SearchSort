@@ -98,13 +98,12 @@ package a2searchsort;
         int lowRange = low;
         
         while (lowRange <= highRange) //while range exists
-        {
-            
-            while (data[lowRange] <= data[pivotIndex]) //for all elements of array that belong on the left side of the class and are already there
+        {          
+            while (lowRange < highRange && data[lowRange] <= data[pivotIndex]) //for all elements of array that belong on the left side of the array and are already there
                 {
                     lowRange++;
                 }
-            while (lowRange < highRange && data[highRange - 1] > data[pivotIndex]) //for all elements of array that belong on the right side of the class and are already there
+            while (lowRange < highRange && data[highRange - 1] > data[pivotIndex]) //for all elements of array that belong on the right side of the array and are already there
                 {
                     highRange--;
                 }
