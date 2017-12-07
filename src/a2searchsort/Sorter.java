@@ -31,11 +31,11 @@ package a2searchsort;
  	
  	// ********** accessors **********
         
-        public int[] bSort (int[] data) //simple binary sort
+        public int[] bSort (int[] data, int length) //simple binary sort
         {       
-            for (int m = 0; m < data.length - 1; m++) //goes through entire array
+            for (int m = 0; m < length - 1; m++) //goes through entire array
                 {
-                    for (int i = 0; i < data.length - 1; i++) //ges through again, nested
+                    for (int i = 0; i < length - 1; i++) //ges through again, nested
                         {
                             if (data[i + 1] < data[i]) //if the current largest element is larger than the element next to itself
                                 {
@@ -49,14 +49,14 @@ package a2searchsort;
             return data; //return sorted array
         }
         
-        public int[] sSort (int[] data) //simple selection sort
+        public int[] sSort (int[] data, int length) //simple selection sort
         {
             int swapped = 0;
             int small = 0;
             
-            for (int m = 0; m < data.length; m++) //goes through entire array one element at a time
+            for (int m = 0; m < length; m++) //goes through entire array one element at a time
                 {
-                    for (int i = swapped; i < data.length; i++) //goes through array starting at last swapped element
+                    for (int i = swapped; i < length; i++) //goes through array starting at last swapped element
                         {
                             if (data[i] < data[small]) //if the smallest value is greater than current element
                                 {
@@ -74,12 +74,12 @@ package a2searchsort;
             return data;
         }
         
-        public int[] qSort (int[] data) //call to quickSort
+        public int[] qSort (int[] data, int length) //call to quickSort
         {
-            return quickSort (0, data.length - 1, data); //call to the actual quicksort method (that needs some different arguments)
+            return quickSort (0, length - 1, data); //call to the actual quicksort method (that needs some different arguments)
         }
         
-        public int[] quickSort (int low, int hi, int[] data) //recursive qs sorter
+        private int[] quickSort (int low, int hi, int[] data) //recursive qs sorter
         {
             if (low < hi) //if the range given exists
             {
@@ -91,7 +91,7 @@ package a2searchsort;
             return data; //return sorted array
         }
         
-         public int partition (int low, int high, int[] data) //partitions data
+         private int partition (int low, int high, int[] data) //partitions data
     {
         int pivotIndex = high;
         int highRange = high;
